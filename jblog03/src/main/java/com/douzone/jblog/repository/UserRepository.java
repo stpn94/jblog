@@ -30,7 +30,7 @@ public class UserRepository {
 //		sqlSession.insert("post.insert", postVo);
 //	}
 	
-	public void insertUser(UserVo userVo) {
+	public void insert(UserVo userVo) {
 		sqlSession.insert("user.insert", userVo);
 	}
 
@@ -39,7 +39,6 @@ public class UserRepository {
 	}
 
 	public UserVo getUser(String id, String password) {
-
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("i", id);
 		map.put("p", password);
