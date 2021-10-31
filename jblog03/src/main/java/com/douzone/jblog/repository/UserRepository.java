@@ -34,11 +34,11 @@ public class UserRepository {
 		sqlSession.insert("user.insert", userVo);
 	}
 
-	public UserVo getUser(String id) {
+	public UserVo findById(String id) {
 		return sqlSession.selectOne("user.findById", id);
 	}
 
-	public UserVo getUser(String id, String password) {
+	public UserVo findByIdAndPassword(String id, String password) {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("i", id);
 		map.put("p", password);
