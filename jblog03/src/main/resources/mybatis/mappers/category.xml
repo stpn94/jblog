@@ -8,7 +8,7 @@
 	<![CDATA[ 
 		INSERT
 		  INTO category (blog_id, name, `desc`)
-		VALUES (#{blog_id}, #{name}, #{desc})
+		VALUES (#{id}, #{name}, #{desc})
 	]]>
 	</insert>
 

@@ -215,3 +215,11 @@ SELECT p.no , p.category_no, p.title , p.contents, p.reg_date
    AND p.category_no = c.no
    AND c.blog_id = 'id'
    AND p.no = 1;
+   
+select * from user;
+delete from user where id = 'test';
+delete from blog where user_id = 'test';
+delete from category where blog_id = 'test';
+
+select * from category;
+select * from blog;

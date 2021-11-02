@@ -12,8 +12,8 @@ public class BlogRepository {
 	@Autowired
 	private SqlSession sqlSession;
 
-	public void insert(BlogVo vo) {
-		sqlSession.insert("blog.insert", vo);
+	public void insert(String id) {
+		sqlSession.insert("blog.insert", id);
 	}
 
 	public void update(BlogVo vo) {

@@ -3,11 +3,11 @@
 <mapper namespace="blog">
 
 	<!-- insert Blog -->
-	<insert id="insert" parameterType="blogvo">	
+	<insert id="insert" parameterType="string">	
 	<![CDATA[ 
 		 INSERT
 		   INTO blog (user_id, title, logo)
-		 VALUES (#{id}, #{title}, #{logo})
+		 VALUES ('${_parameter }', '${_parameter }님의 블로그', '/assets/images/spring-logo.jpg')
 	]]>
 	</insert>
 
