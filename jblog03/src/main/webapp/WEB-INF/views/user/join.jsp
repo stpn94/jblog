@@ -11,6 +11,46 @@
 <title>JBlog</title>
 <Link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/jblog.css">
 </head>
+<script
+	src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.9.0.js"
+	type="text/javascript"></script>
+<script>
+	$(function() {
+		btn = $('#btn-check');
+		btn.click(function() {
+			var id = $("#id").val();
+			if (id == "") {
+				return;
+			}
+			$.ajax({
+				url : "/jblog03/user/api/checkid?id=" + id,
+				type : "get",
+				dataType : "json",
+				error : function(xhr, status, e) {
+					console.error(status, e);
+				},
+				success : function(response) {
+					console.log(response);
+
+					if (response.result != "success") {
+						console.error(response.message);
+						return;
+					}
+
+					if (response.data) {
+						alert("존재하는 아이디 입니다! 다른 아이디를 사용 해주세요");
+						$("#id").val("");
+						$("#id").focus();
+						return;
+					}
+
+					$("#btn-check").hide();
+					$("#img-check").show();
+				}
+			});
+		});
+	});
+</script>
 <body>
 	<div class="center-content">
 		<jsp:include page="/WEB-INF/views/includes/header.jsp" />

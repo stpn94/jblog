@@ -31,9 +31,15 @@ public class UserService {
 		categoryVo.setDesc("기본 카테고리입니다.");
 		categoryRepository.insert(categoryVo);
 	}
-
+	
+	//로그인
 	public UserVo getUser(String id, String password) {
 		return userRepository.findByIdAndPassword(id, password);
+	}
+	
+	//Ajax iD duplication Check
+	public UserVo getUser(String id) {
+		return userRepository.findById(id);
 	}
 
 
