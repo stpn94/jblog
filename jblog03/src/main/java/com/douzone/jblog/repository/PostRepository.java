@@ -34,5 +34,16 @@ public class PostRepository {
 		map.put("no", no);
 		return sqlSession.selectOne("post.findByNo", map);
 	}
+	
+	public PostVo findByOne(String id, Long no) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("id", id);
+		map.put("no", no);
+		return sqlSession.selectOne("post.findByOne" , map);
+	}
+	
+	public void deletePost(Long categoryNo) {
+		sqlSession.delete("post.deletePost", categoryNo);
+	}
 
 }

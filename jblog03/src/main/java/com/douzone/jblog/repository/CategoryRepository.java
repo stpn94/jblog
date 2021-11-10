@@ -24,8 +24,9 @@ public class CategoryRepository {
 		return sqlSession.selectOne("category.findAllCount");
 	}
 
-	public boolean delete(Long no) {
-		return sqlSession.selectOne("category.delete", no);
+	public void delete(Long no) {
+		System.out.println(no);
+		sqlSession.selectOne("category.delete", no);
 	}
 
 	public List<CategoryVo> findByList(String id) {
@@ -50,10 +51,15 @@ public class CategoryRepository {
 		return sqlSession.selectOne("category.findCountByPostNo", map);
 	}
 
+	
 	public CategoryVo findByOne(String id) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("id", id);
 		return sqlSession.selectOne("category.findByOne", map);
 	}
 
+	public List<CategoryVo> findAllCategory(String id) {
+		List<CategoryVo> list = sqlSession.selectList("category.findAllCategory", id);
+		return list;
+	}
 }

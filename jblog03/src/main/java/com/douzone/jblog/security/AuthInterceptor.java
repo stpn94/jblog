@@ -19,7 +19,6 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 		System.out.println("AuthInterceptor[들렸음]");
 		// 1. handler 종류 확인 
 		if (handler instanceof HandlerMethod == false) {
-			System.out.println("AuthInterceptor[아무거도안함]");
 			// DefaultServletHandler 처리하는 경우 ( 정적 자원 접근)
 			return true;
 		}
@@ -78,7 +77,20 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 //				response.sendRedirect(request.getContextPath());
 //				return false;
 //		}
-		System.out.println("AuthInterceptor[아무거도안함]");
+		
+		String role = auth.role().toString();
+		System.out.println("[AuthInterceptor] : " + role + "작업중");
+		String[] divId = request.getRequestURI().toString().split("/");	
+		String id = divId[2];
+		
+		if( id.equals(authUser.getId()) == false){   // admin이 아니므로 return false
+			System.out.println("authUser가 admin이 아니라서 ==>> main으로");
+			response.sendRedirect(request.getContextPath());
+			return false;
+		}
+
+		System.out.println("AuthInterceptor[admin통과]");
+		
 		return true;
 	}
 

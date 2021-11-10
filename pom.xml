@@ -68,5 +68,6 @@
 	</build>	
 	<modules>
 		<module>jblog03</module>
+		<module>test</module>
 	</modules>
 </project>

@@ -29,7 +29,10 @@ public class UserController {
 	
 	/* 회원가입 */
 	@PostMapping("user/join")
-	public String join(@ModelAttribute @Valid UserVo vo, BindingResult result, Model model) {
+	public String join(
+			@ModelAttribute @Valid UserVo vo, 
+			BindingResult result, 
+			Model model) {
 		String blogId = vo.getId();
 		if(result.hasErrors()) {
 			model.addAllAttributes(result.getModel());

@@ -43,13 +43,13 @@ SELECT id, name , password
 -- VALUES (#{id}, #{title}, #{logo})
 INSERT
   INTO blog (user_id, title, logo)
-VALUES ('id', 'title', '/logo'),
-	   ('id1', 'title1', '/logo'),
-       ('id2', 'title2', '/logo'),
-       ('id3', 'title3', '/logo'),
-       ('id4', 'title4', '/logo'),
-       ('id5', 'title5', '/logo');
-
+VALUES ('id', 'title', '/assets/images/spring-logo.jpg'),
+	   ('id1', 'title1', '/assets/images/spring-logo.jpg'),
+       ('id2', 'title2', '/assets/images/spring-logo.jpg'),
+       ('id3', 'title3', '/assets/images/spring-logo.jpg'),
+       ('id4', 'title4', '/assets/images/spring-logo.jpg'),
+       ('id5', 'title5', '/assets/images/spring-logo.jpg');
+delete from blog;
 -- SELECT id , title , logo
 --   FROM blog
 --  WHERE id = #{id}
@@ -110,6 +110,13 @@ SELECT name , no
  WHERE 1=1
    AND blog_id = 'id'
  LIMIT 0 , 1;
+ 
+SELECT c.no as no , p.title as title , p.contents as contents
+  FROM user u , category c , post p
+ WHERE 1 =1
+   AND u.id = 'id'
+   AND c.no = #{no}
+ LIMIT 0 , 1;
 
 -- <!-- findCountByPostNo category -->
 -- 	SELECT count(*) 
@@ -146,7 +153,15 @@ SELECT no , name , `desc` , blog_id
   FROM category
  WHERE 1=1
    AND blog_id = 'id'
-   AND no  = 11;
+   AND no  = 82;
+   
+SELECT p.no as no, p.title as title, p.contents as contents, p.reg_date as regDate, p.category_no as categoryNo
+  FROM post p , category c
+ WHERE 1 = 1
+   AND p.category_no = c.no
+   AND c.blog_id = 'id'
+   AND c.no = 82
+   LIMIT 0 , 1;
 -- /CATEGORY
 
 -- POST
@@ -158,11 +173,11 @@ SELECT no , name , `desc` , blog_id
 
 INSERT
   INTO post (category_no, title, contents)
-VALUES (11, 'title' , 'content'),
-	   (11, 'title1' , 'content1'),
-       (11, 'title2' , 'content2'),
-       (11, 'title3' , 'content3'),
-       (11, 'title4' , 'content4');
+VALUES (82, 'title' , 'content'),
+	   (82, 'title1' , 'content1'),
+       (82, 'title2' , 'content2'),
+       (82, 'title3' , 'content3'),
+       (82, 'title4' , 'content4');
 
 select * from post;
 
@@ -176,11 +191,11 @@ select * from post;
 -- 		   AND b.no = #{no}
 -- 		 LIMIT 0 , 1
 
-SELECT c.no , p.title , p.contents
+SELECT u.id, c.no , p.title , p.contents
   FROM user u , category c , post p
  WHERE 1 =1
    AND u.id = 'id'
-   AND c.no = '11'
+   AND c.no = '62'
  LIMIT 0 , 1;
 
 
@@ -216,10 +231,21 @@ SELECT p.no , p.category_no, p.title , p.contents, p.reg_date
    AND c.blog_id = 'id'
    AND p.no = 1;
    
+	SELECT c.noas no, c.name as name , c.desc, count(p.category_no) as count
+	  FROM category c left JOIN post p
+  	    ON c.no = p.category_no 
+	 WHERE c.blog_id = 'id'
+	 GROUP BY c.no;
+   
+DELETE
+  FROM category
+ WHERE no = 24 ;
+delete from user where id LIKE CONCAT('%','id','%');
+delete from blog where user_id LIKE CONCAT('%','id','%');
+delete from category where blog_id = 'id';
+delete from category where no = 10;
+delete from post where category_no = 11;
 select * from user;
-delete from user where id = 'test';
-delete from blog where user_id = 'test';
-delete from category where blog_id = 'test';
-
 select * from category;
 select * from blog;
+select * from post;

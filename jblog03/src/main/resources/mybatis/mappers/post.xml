@@ -2,17 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="post">
+
+
 	<insert id="insert" parameterType="postvo">	
 	<![CDATA[ 
 		INSERT
 		  INTO post (category_no, title, contents)
-		VALUES (#{category_no}, #{title} ,#{contents})
+		VALUES (#{categoryNo}, #{title} ,#{contents})
 	]]>
 	</insert>
-	
-	<select id="findByOne" resultType="postvo" parameterType="map">
+
+	<select id="findByOne" parameterType="map" resultType="postvo">
 	<![CDATA[
-		SELECT c.no , p.title , p.contents
+		SELECT c.no as no , p.title as title , p.contents as contents
 		  FROM user u , category c , post p
 		 WHERE 1 =1
 		   AND u.id = #{id}
@@ -23,7 +25,7 @@
 
 	<select id="findByList" parameterType="map" resultType="postvo">
 	<![CDATA[
-		SELECT p.no , p.title , p.contents, p.reg_date , p.category_no , c.blog_id
+		SELECT p.no as no, p.title as title, p.contents as contents, p.reg_date as regDate, p.category_no as categoryNo, c.blog_id as blogId
 		  FROM post p , category c
 		 WHERE 1=1
 		   AND p.category_no=c.no
@@ -35,7 +37,7 @@
 
 	<select id="findByNo" parameterType="map" resultType="postvo">
 	<![CDATA[
-		SELECT p.no , p.title , p.contents, p.reg_date , p.category_no
+		SELECT p.no as no, p.title as title, p.contents as contents, p.reg_date as regDate, p.category_no as categoryNo
 		  FROM post p , category c
 		 WHERE 1 = 1
 		   AND p.category_no = c.no
@@ -43,5 +45,13 @@
 		   AND p.no = #{no}
 	]]>
 	</select>
+	
+	<insert id="deletePost" parameterType="long">
+		<![CDATA[
+			DELETE
+			  FROM post
+			 WHERE category_no=#{categoryNo }
+		]]>
+	</insert>
 
 </mapper>

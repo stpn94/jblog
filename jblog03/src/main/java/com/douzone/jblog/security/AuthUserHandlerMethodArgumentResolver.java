@@ -26,6 +26,7 @@ public class AuthUserHandlerMethodArgumentResolver implements HandlerMethodArgum
 			NativeWebRequest webRequest, 
 			WebDataBinderFactory binderFactory) 
 					throws Exception {
+		System.out.println("[AuthUserHandlerMethodArgumentResolver] 들어옴");
 		
 		if (supportsParameter(parameter) == false) {
 			return WebArgumentResolver.UNRESOLVED; //아규먼트 해결되지않음
@@ -37,9 +38,11 @@ public class AuthUserHandlerMethodArgumentResolver implements HandlerMethodArgum
 		HttpSession session = request.getSession();
 		// 세션이 없으면 null 이다
 		if (session == null) {
+			System.out.println("[AuthUserHandlerMethodArgumentResolver] : session이 Null이다.");
 			return null;
 		}
 
+		System.out.println("[AuthUserHandlerMethodArgumentResolver] : session에 유저가 있다.");
 		return session.getAttribute("authUser");
 	}
 
@@ -51,6 +54,7 @@ public class AuthUserHandlerMethodArgumentResolver implements HandlerMethodArgum
 		// @AuthUser가 안붙어 있으면,
 		// null이면 안붙어있는거
 		if (authUser == null) {
+			System.out.println("[AuthUserHandlerMethodArgumentResolver] : @AuthUser가 안붙어있다.");
 			return false;
 		}
 		
@@ -58,6 +62,7 @@ public class AuthUserHandlerMethodArgumentResolver implements HandlerMethodArgum
 		// 파라미터 타입()이 UserVo가 아니면,
 		// parameter.getParameterType()와 UserVo.class 다르면
 		if (parameter.getParameterType().equals(UserVo.class) == false) {
+			System.out.println("[AuthUserHandlerMethodArgumentResolver] : 파라미터 타입()이 UserVo가 아니다.");
 			return false;
 		}
 

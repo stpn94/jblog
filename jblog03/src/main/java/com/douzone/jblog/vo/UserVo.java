@@ -6,7 +6,6 @@ import org.hibernate.validator.constraints.Length;
 
 public class UserVo {
 	
-	
 	@NotEmpty
 	@Length(min=2 , max=8)
 	private String id;
@@ -21,6 +20,8 @@ public class UserVo {
 	
 	
 	private String join_date;
+	
+	
 	public String getId() {
 		return id;
 	}

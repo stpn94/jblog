@@ -17,7 +17,7 @@
 	<![CDATA[ 
 		DELETE
 		  FROM category
-		 WHERE = #{no}  
+		 WHERE no = #{no}  
 	]]>
 	</delete>
 
@@ -28,9 +28,9 @@
 		  FROM category
 	]]>
 	</select>
-	
+
 	<!-- findByOne Recently category -->
-	<select id="findByOne" resultType="categoryvo" parameterType="map">
+	<select id="findByOne" parameterType="map" resultType="categoryvo">
 	<![CDATA[
 		SELECT name , no
 		  FROM category
@@ -51,26 +51,36 @@
 		   AND p.category_no = #{no}
 	]]>
 	</select>
-	
+
 	<!-- findByList category -->
 	<select id="findByList" parameterType="map" resultType="categoryvo">
 	<![CDATA[
-		SELECT no , name , desc, blog_id
+		SELECT no , name , `desc`, blog_id as id
 		  FROM category
 		 WHERE 1=1
 		   AND blog_id = #{id};
 	]]>
 	</select>
-	
+
 	<!-- findByNo category -->
 	<select id="findByNo" parameterType="map" resultType="categoryvo">
 	<![CDATA[
-		SELECT no , name , desc , blog_id
+		SELECT no , name , `desc` as desc , blog_id as id
 		  FROM category
 		 WHERE 1=1
 		   AND blog_id = #{id}
 		   AND no = #{no}
 	]]>
+	</select>
+
+	<select id="findAllCategory" parameterType="string" resultType="categoryvo">
+		<![CDATA[
+		SELECT c.no as no, c.name as name , c.desc as `desc`, count(p.category_no) as count
+		  FROM category c left JOIN post p
+		    ON c.no = p.category_no 
+		 WHERE c.blog_id = #{id }
+		 GROUP BY c.no
+		]]>
 	</select>
 
 </mapper>

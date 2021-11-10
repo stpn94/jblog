@@ -54,10 +54,12 @@
 <body>
 	<div class="center-content">
 		<jsp:include page="/WEB-INF/views/includes/header.jsp" />
+		
 		<form:form modelAttribute="userVo" class="join-form" id="join-form" method="post" action="${pageContext.request.contextPath}/user/join">
 		
 			<label class="block-label" for="name">이름</label>
 			<form:input path="name" />
+			
 			<p style="color: #f00; text-align: left; padding-left: 0">
 				<form:errors path="name"/>
 			</p>

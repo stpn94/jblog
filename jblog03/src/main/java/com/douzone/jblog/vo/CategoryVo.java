@@ -2,17 +2,25 @@ package com.douzone.jblog.vo;
 
 public class CategoryVo {
 
-	private int no;
+	private Long no;
 	private String name;
 	private String desc;
 	private String id;
 	private int count;
 
-	public int getNo() {
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public Long getNo() {
 		return no;
 	}
 
-	public void setNo(int no) {
+	public void setNo(Long no) {
 		this.no = no;
 	}
 
@@ -32,13 +40,6 @@ public class CategoryVo {
 		this.desc = desc;
 	}
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	public int getCount() {
 		return count;
@@ -47,5 +48,12 @@ public class CategoryVo {
 	public void setCount(int count) {
 		this.count = count;
 	}
+
+	@Override
+	public String toString() {
+		return String.format("CategoryVo [no=%s, name=%s, desc=%s, id=%s, count=%s]", no, name, desc, id, count);
+	}
+	
+	
 
 }
