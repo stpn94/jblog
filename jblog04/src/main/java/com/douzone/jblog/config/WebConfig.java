@@ -13,7 +13,7 @@ import com.douzone.config.web.SecurityConfig;
 
 @Configuration
 @EnableAspectJAutoProxy
-@ComponentScan({"com.douzone.jblog.controller", "com.douzone.jblog.exception"})
+@ComponentScan({"com.douzone.jblog.controller", "com.douzone.jblog.exception", "com.douzone.jblog.aspect"})
 @Import({MvcConfig.class , MessageConfig.class , FileuploadConfig.class , SecurityConfig.class})
 public class WebConfig {
 	
