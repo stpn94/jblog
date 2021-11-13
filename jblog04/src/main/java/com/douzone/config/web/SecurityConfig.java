@@ -14,7 +14,6 @@ import com.douzone.jblog.security.AuthUserHandlerMethodArgumentResolver;
 import com.douzone.jblog.security.LoginInterceptor;
 import com.douzone.jblog.security.LogoutInterceptor;
 
-
 @Configuration
 public class SecurityConfig extends WebMvcConfigurerAdapter {
 
@@ -50,11 +49,7 @@ public class SecurityConfig extends WebMvcConfigurerAdapter {
 
 		registry.addInterceptor(logoutInterceptor()).addPathPatterns("/user/logout");
 
-		registry.addInterceptor(authInterceptor()).addPathPatterns("/*")
-		.excludePathPatterns("/user/auth")
-		.excludePathPatterns("/user/logout")
-		.excludePathPatterns("/assets/*");
-		
+		registry.addInterceptor(authInterceptor()).addPathPatterns("/**").excludePathPatterns("/user/auth").excludePathPatterns("/user/logout").excludePathPatterns("/assets/**");
 
 	}
 

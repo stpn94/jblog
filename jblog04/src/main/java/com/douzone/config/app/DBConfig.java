@@ -16,29 +16,26 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @PropertySource("classpath:com/douzone/jblog/config/app/jdbc.properties")
 public class DBConfig {
-	
+
 	@Autowired
 	private Environment env;
-	
-	
+
 	@Bean
 	public DataSource dataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
-		
+
 		dataSource.setDriverClassName(env.getProperty("jdbc.driverClassName"));
 		dataSource.setUrl(env.getProperty("jdbc.url"));
 		dataSource.setUsername(env.getProperty("jdbc.username"));
 		dataSource.setPassword(env.getProperty("jdbc.password"));
-		dataSource.setInitialSize(env.getProperty("jdbc.initialSize" , Integer.class)) ;
-		dataSource.setMaxActive(env.getProperty("jdbc.maxActive" , Integer.class));
+		dataSource.setInitialSize(env.getProperty("jdbc.initialSize", Integer.class));
+		dataSource.setMaxActive(env.getProperty("jdbc.maxActive", Integer.class));
 		return dataSource;
 	}
-	
-	
-	
+
 	@Bean
 	public PlatformTransactionManager transactionManager(DataSource dataSource) {
-	       return new DataSourceTransactionManager(dataSource);
+		return new DataSourceTransactionManager(dataSource);
 	}
 
 }

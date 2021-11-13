@@ -1,6 +1,5 @@
 package com.douzone.jblog.config;
 
-
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
@@ -13,10 +12,8 @@ import com.douzone.config.web.SecurityConfig;
 
 @Configuration
 @EnableAspectJAutoProxy
-@ComponentScan({"com.douzone.jblog.controller", "com.douzone.jblog.exception", "com.douzone.jblog.aspect"})
-@Import({MvcConfig.class , MessageConfig.class , FileuploadConfig.class , SecurityConfig.class})
+@ComponentScan({ "com.douzone.jblog.controller", "com.douzone.jblog.exception", "com.douzone.jblog.aspect" })
+@Import({ MvcConfig.class, MessageConfig.class, FileuploadConfig.class, SecurityConfig.class })
 public class WebConfig {
-	
-	
-	
+
 }

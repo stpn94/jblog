@@ -10,8 +10,8 @@ import com.douzone.config.app.MyBatisConfig;
 
 @Configuration
 @EnableAspectJAutoProxy
-@ComponentScan({"com.douzone.jblog.repository" , "com.douzone.jblog.service"})
-@Import({DBConfig.class , MyBatisConfig.class})
+@ComponentScan({ "com.douzone.jblog.repository", "com.douzone.jblog.service" })
+@Import({ DBConfig.class, MyBatisConfig.class })
 public class AppConfig {
 
 }

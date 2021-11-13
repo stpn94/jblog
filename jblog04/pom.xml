@@ -17,7 +17,7 @@
 	</properties>
 
 	<dependencies>
-<!-- Test  -->
+		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -168,7 +168,7 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>6.1.0.Final</version>
 		</dependency>
-		
+
 
 	</dependencies>
 

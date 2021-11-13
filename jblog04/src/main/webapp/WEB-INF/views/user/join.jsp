@@ -11,9 +11,7 @@
 <title>JBlog</title>
 <Link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/jblog.css">
 </head>
-<script
-	src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.9.0.js"
-	type="text/javascript"></script>
+<script src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.9.0.js" type="text/javascript"></script>
 <script>
 	$(function() {
 		btn = $('#btn-check');
@@ -23,26 +21,27 @@
 				return;
 			}
 			$.ajax({
-				url : "/jblog03/user/api/checkid?id=" + id,
+				url : "${pageContext.request.contextPath }/user/api/checkid?id=" + id,
 				type : "get",
 				dataType : "json",
 				error : function(xhr, status, e) {
 					console.error(status, e);
 				},
 				success : function(response) {
-					console.log(response);
-
 					if (response.result != "success") {
-						console.error(response.message);
+						console.log(response.message);
 						return;
 					}
 
+					console.log(response);
 					if (response.data) {
 						alert("존재하는 아이디 입니다! 다른 아이디를 사용 해주세요");
 						$("#id").val("");
 						$("#id").focus();
 						return;
 					}
+
+
 
 					$("#btn-check").hide();
 					$("#img-check").show();
@@ -54,16 +53,16 @@
 <body>
 	<div class="center-content">
 		<jsp:include page="/WEB-INF/views/includes/header.jsp" />
-		
+
 		<form:form modelAttribute="userVo" class="join-form" id="join-form" method="post" action="${pageContext.request.contextPath}/user/join">
-		
+
 			<label class="block-label" for="name">이름</label>
 			<form:input path="name" />
-			
+
 			<p style="color: #f00; text-align: left; padding-left: 0">
-				<form:errors path="name"/>
+				<form:errors path="name" />
 			</p>
-			
+
 			<label class="block-label" for="id">아이디</label>
 			<form:input path="id" />
 			<input type="button" id="btn-check" value="중복체크">

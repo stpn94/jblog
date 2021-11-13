@@ -18,13 +18,13 @@ public class MyBatisConfig {
 		SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
 		sqlSessionFactory.setDataSource(dataSource);
 		sqlSessionFactory.setConfigLocation(applicationContext.getResource("classpath:com/douzone/jblog/config/app/mybatis/configuration.xml"));
-		
+
 		return sqlSessionFactory.getObject();
 	}
-	
+
 	@Bean
 	public SqlSession sqlSession(SqlSessionFactory sqlSeesionFacotry) {
 		return new SqlSessionTemplate(sqlSeesionFacotry);
 	}
-	
+
 }

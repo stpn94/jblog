@@ -18,16 +18,11 @@ import com.douzone.jblog.vo.UserVo;
  * 그걸 알면 @RequestParam 같은 걸 커스텀 해서 만들수 있다.*/
 
 public class AuthUserHandlerMethodArgumentResolver implements HandlerMethodArgumentResolver {
-	
+
 	@Override
-	public Object resolveArgument(
-			MethodParameter parameter, 
-			ModelAndViewContainer mavContainer, 
-			NativeWebRequest webRequest, 
-			WebDataBinderFactory binderFactory) 
-					throws Exception {
+	public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
 		System.out.println("[AuthUserHandlerMethodArgumentResolver] 들어옴");
-		
+
 		if (supportsParameter(parameter) == false) {
 			return WebArgumentResolver.UNRESOLVED; //아규먼트 해결되지않음
 		}
@@ -46,7 +41,6 @@ public class AuthUserHandlerMethodArgumentResolver implements HandlerMethodArgum
 		return session.getAttribute("authUser");
 	}
 
-	
 	@Override
 	public boolean supportsParameter(MethodParameter parameter) {
 		AuthUser authUser = parameter.getParameterAnnotation(AuthUser.class);
@@ -57,7 +51,7 @@ public class AuthUserHandlerMethodArgumentResolver implements HandlerMethodArgum
 			System.out.println("[AuthUserHandlerMethodArgumentResolver] : @AuthUser가 안붙어있다.");
 			return false;
 		}
-		
+
 		// Type 체크
 		// 파라미터 타입()이 UserVo가 아니면,
 		// parameter.getParameterType()와 UserVo.class 다르면

@@ -9,14 +9,13 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 public class LogoutInterceptor extends HandlerInterceptorAdapter {
 
 	@Override
-	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-			throws Exception {
-		
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+
 		HttpSession session = request.getSession();
-		
+
 		session.removeAttribute("authUser");
 		session.invalidate();
-		System.out.println("[LogoutIntercepter] : authUser === ID,비밀번호 확인하고 session삭제 완료");		
+		System.out.println("[LogoutIntercepter] : authUser === ID,비밀번호 확인하고 session삭제 완료");
 		response.sendRedirect(request.getContextPath());
 		return false;
 	}
