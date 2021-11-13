@@ -67,8 +67,8 @@
 		</plugins>
 	</build>	
 	<modules>
+		<module>jblog03</module>
 		<module>jblog04</module>
-		<module>test</module>
-		<module>jblog04</module>
+		<module>jblog06</module>
 	</modules>
 </project>
