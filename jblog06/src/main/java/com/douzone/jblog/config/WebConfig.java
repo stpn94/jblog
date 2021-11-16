@@ -6,8 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.http.MediaType;
@@ -26,8 +26,8 @@ import com.douzone.jblog.security.AuthUserHandlerMethodArgumentResolver;
 import com.douzone.jblog.security.LoginInterceptor;
 import com.douzone.jblog.security.LogoutInterceptor;
 
-
-@SpringBootConfiguration
+//@SpringBootConfiguration
+@Configuration
 @PropertySource("classpath:com/douzone/jblog/config/WebConfig.properties")
 public class WebConfig implements WebMvcConfigurer {
 

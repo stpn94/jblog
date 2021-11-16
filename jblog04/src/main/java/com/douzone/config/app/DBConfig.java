@@ -13,7 +13,6 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@EnableTransactionManagement
 @PropertySource("classpath:com/douzone/jblog/config/app/jdbc.properties")
 public class DBConfig {
 
@@ -33,9 +32,5 @@ public class DBConfig {
 		return dataSource;
 	}
 
-	@Bean
-	public PlatformTransactionManager transactionManager(DataSource dataSource) {
-		return new DataSourceTransactionManager(dataSource);
-	}
 
 }

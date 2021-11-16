@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="user">
-	
 	<!-- insert user -->
 	<insert id="insert" parameterType="uservo">	
 	<![CDATA[ 
@@ -11,7 +10,7 @@
 		VALUES (#{id} ,#{name} ,#{password})
 	]]>
 	</insert>
-	
+
 	<!-- findById -->
 	<select id="findById" parameterType="string" resultType="uservo">
 	<![CDATA[

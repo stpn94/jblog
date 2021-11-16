@@ -3,7 +3,6 @@
 
 <mapper namespace="post">
 
-
 	<insert id="insert" parameterType="postvo">	
 	<![CDATA[ 
 		INSERT
